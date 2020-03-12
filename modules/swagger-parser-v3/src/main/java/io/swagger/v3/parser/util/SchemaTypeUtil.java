@@ -14,6 +14,8 @@ import io.swagger.v3.oas.models.media.ObjectSchema;
 import io.swagger.v3.oas.models.media.PasswordSchema;
 import io.swagger.v3.oas.models.media.Schema;
 import io.swagger.v3.oas.models.media.StringSchema;
+import io.swagger.v3.oas.models.media.URISchema;
+import io.swagger.v3.oas.models.media.URLSchema;
 import io.swagger.v3.oas.models.media.UUIDSchema;
 import org.apache.commons.lang3.StringUtils;
 
@@ -39,6 +41,8 @@ public class SchemaTypeUtil {
     public static final String PASSWORD_FORMAT = "password";
     public static final String EMAIL_FORMAT = "email";
     public static final String UUID_FORMAT = "uuid";
+    public static final String URI_FORMAT = "uri";
+    public static final String URL_FORMAT = "url";
 
     public static Schema createSchemaByType(ObjectNode node){
         if(node == null) {
@@ -97,6 +101,12 @@ public class SchemaTypeUtil {
             }
             else if(UUID_FORMAT.equals(format)) {
                 return new UUIDSchema();
+            }
+            else if(URI_FORMAT.equals(format)) {
+                return new URISchema();
+            }
+            else if(URL_FORMAT.equals(format)) {
+                return new URLSchema();
             }
             else {
                 if (StringUtils.isBlank(format)){
